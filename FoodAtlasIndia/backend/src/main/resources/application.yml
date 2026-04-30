@@ -1,0 +1,58 @@
+# ============================================
+# YatraMind — Application Configuration
+# ============================================
+
+spring:
+  application:
+    name: YatraMind
+
+  # --- Database (H2 for dev, switch to PostgreSQL for production) ---
+  datasource:
+    url: jdbc:h2:mem:yatraminddb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  # --- Jackson ---
+  jackson:
+    default-property-inclusion: non_null
+
+# --- Server ---
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+# --- JWT ---
+app:
+  jwt:
+    secret: YatraMindSuperSecretKeyForJWTToken2026MakeItLongEnoughForHS512Algorithm!!
+    access-token-expiration: 1800000    # 30 minutes
+    refresh-token-expiration: 604800000  # 7 days
+
+# --- CORS ---
+  cors:
+    allowed-origins: http://localhost:5173,http://localhost:3000
+    allowed-methods: GET,POST,PUT,DELETE,PATCH,OPTIONS
+    allowed-headers: "*"
+    allow-credentials: true
+
+# --- Logging ---
+logging:
+  level:
+    com.yatramind: DEBUG
+    org.springframework.security: INFO
