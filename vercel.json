@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/FoodAtlasIndia/$1" }
+  ]
+}
