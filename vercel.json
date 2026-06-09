@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/FoodAtlasIndia/$1" }
+    { "source": "/(.*)", "destination": "/FoodAtlasIndia/frontend/$1" }
   ]
 }
